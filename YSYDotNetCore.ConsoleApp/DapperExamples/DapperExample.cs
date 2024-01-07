@@ -27,8 +27,8 @@ namespace YSYDotNetCore.ConsoleApp.DapperExamples
             //Edit(3);
             //Edit(15);
             // create("Test Title", "Test Author", "Test Content");
-            //update(2,"Test Title", "Test Author", "Test Content");
-            Delete(1);
+            update(3,"Test Title", "Test Author", "Test Content");
+            //Delete(1);
         }
 
         private void read()
