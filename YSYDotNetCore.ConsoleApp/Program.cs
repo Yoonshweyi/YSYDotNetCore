@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using YSYDotNetCore.ConsoleApp.AdoDotNetExamples;
+using YSYDotNetCore.ConsoleApp.DapperExamples;
 
 Console.WriteLine("Hello, World!");
 //SqlConnectionStringBuilder sqlConnectionStringBuilder=new SqlConnectionStringBuilder();
@@ -47,7 +48,9 @@ foreach (DataRow dr in dt.Rows)
    
 }*/
 
-AdoDotNetExample adoDotNetExample= new AdoDotNetExample();
-adoDotNetExample.run();
+//AdoDotNetExample adoDotNetExample= new AdoDotNetExample();
+//adoDotNetExample.run();
 
+DapperExample dapperExample= new DapperExample();
+dapperExample.run();
 Console.ReadKey();
