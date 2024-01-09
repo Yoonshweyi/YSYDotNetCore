@@ -22,7 +22,7 @@ namespace YSYDotNetCore.ConsoleApp.EFCoreExamples
 
             // create("Test Title", "Test Author", "Test Content");
             //update(4, "Test Title1", "Test Author", "Test Content");
-            Delete(12);
+            Delete(14);
 
         }
 
@@ -60,12 +60,13 @@ namespace YSYDotNetCore.ConsoleApp.EFCoreExamples
         {
             BlogDataModel blog = new BlogDataModel()
             {
-                Blog_Title = title,
+               Blog_Title = title,
                 Blog_Author = author,
                 Blog_content = content
             };
 
             _dbContext.Blogs.Add(blog);
+            
 
             int result= _dbContext.SaveChanges();
 

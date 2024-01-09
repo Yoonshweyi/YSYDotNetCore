@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSYDotNetCore.ConsoleApp", "YSYDotNetCore.ConsoleApp\YSYDotNetCore.ConsoleApp.csproj", "{CC586EB4-9B98-41D5-B284-C11625012C6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.ConsoleApp", "YSYDotNetCore.ConsoleApp\YSYDotNetCore.ConsoleApp.csproj", "{CC586EB4-9B98-41D5-B284-C11625012C6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSYDotNetCore.RestApi", "YSYDotNetCore.RestApi\YSYDotNetCore.RestApi.csproj", "{D8526042-3B78-4C1B-B231-2F632710F04D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSYDotNetCore.MinimalApi", "YSYDotNetCore.MinimalApi\YSYDotNetCore.MinimalApi.csproj", "{168C04F0-9879-4D75-B4D4-2BB365FCB350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CC586EB4-9B98-41D5-B284-C11625012C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC586EB4-9B98-41D5-B284-C11625012C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC586EB4-9B98-41D5-B284-C11625012C6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8526042-3B78-4C1B-B231-2F632710F04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8526042-3B78-4C1B-B231-2F632710F04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8526042-3B78-4C1B-B231-2F632710F04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8526042-3B78-4C1B-B231-2F632710F04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{168C04F0-9879-4D75-B4D4-2BB365FCB350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168C04F0-9879-4D75-B4D4-2BB365FCB350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168C04F0-9879-4D75-B4D4-2BB365FCB350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168C04F0-9879-4D75-B4D4-2BB365FCB350}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
