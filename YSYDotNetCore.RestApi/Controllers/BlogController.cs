@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using YSYDotNetCore.RestApi.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace YSYDotNetCore.RestApi.Controllers
 {
@@ -17,10 +19,57 @@ namespace YSYDotNetCore.RestApi.Controllers
             return Ok(lst);
         }
 
-        [HttpPost]
-        public IActionResult CreateBlogs()
+        [HttpGet("{id}")]
+        public IActionResult GetBlog(int id)
         {
-            return Ok("post");
+            var item = _dbContext.Blogs.FirstOrDefault(x => x.Blog_Id == id);
+            if(item is null)
+            {
+                return NotFound();
+            }
+            return Ok(item);
+        }
+
+        [HttpGet("{pageNo}/{pageSize}")]
+        public IActionResult GetBlogs(int pageNo,int pageSize)
+        {
+           //pageNo=1[1-10]
+           //pageNo=2[11-20]
+           //endRowno=pageno*pagesize;(1*10)
+           //startrowno=endrowno-pagesize+1;(10-10)+1
+           //567=5670-10=5660+1=5661-5670
+           var lst= _dbContext.Blogs
+            .Skip((pageNo - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+
+            var rowcount= _dbContext.Blogs.Count();
+            var pagecount=rowcount/pageSize;
+            if (rowcount % pageSize > 0)
+            {
+                pagecount++;
+            }
+            return Ok(new
+            {
+               EndOfPage = pageNo >=pagecount,
+                PageCount = pagecount,
+                PageNo = pageNo,
+                PageSize = pageSize,
+                Data = lst
+            } );
+
+
+
+        }
+
+
+        [HttpPost]
+        public IActionResult CreateBlogs(BlogDataModel blog)
+        {
+            _dbContext.Blogs.Add(blog);
+            var result=_dbContext.SaveChanges();
+            var message = result > 0 ? "Saving Successful" : "Saving Failed";
+            return Ok(message);
         }
 
         [HttpPut]
