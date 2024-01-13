@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using YSYDotNetCore.ConsoleApp.AdoDotNetExamples;
 using YSYDotNetCore.ConsoleApp.DapperExamples;
 using YSYDotNetCore.ConsoleApp.EFCoreExamples;
+using YSYDotNetCore.ConsoleApp.HttpClientExamples;
+using YSYDotNetCore.ConsoleApp.RestClientExamples;
 
 Console.WriteLine("Hello, World!");
 //SqlConnectionStringBuilder sqlConnectionStringBuilder=new SqlConnectionStringBuilder();
@@ -55,6 +57,12 @@ foreach (DataRow dr in dt.Rows)
 //DapperExample dapperExample= new DapperExample();
 //dapperExample.run();
 
-EFCoreExample eFCoreExample = new EFCoreExample();
-eFCoreExample.run();
+//EFCoreExample eFCoreExample = new EFCoreExample();
+//eFCoreExample.run();
+
+//HttpClientExample httpClientExample = new HttpClientExample();
+//await httpClientExample.run();
+
+RestClientExample restClientExample= new RestClientExample();
+await restClientExample.run();
 Console.ReadKey();

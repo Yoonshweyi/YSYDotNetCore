@@ -5,9 +5,9 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.ConsoleApp", "YSYDotNetCore.ConsoleApp\YSYDotNetCore.ConsoleApp.csproj", "{CC586EB4-9B98-41D5-B284-C11625012C6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSYDotNetCore.RestApi", "YSYDotNetCore.RestApi\YSYDotNetCore.RestApi.csproj", "{D8526042-3B78-4C1B-B231-2F632710F04D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.RestApi", "YSYDotNetCore.RestApi\YSYDotNetCore.RestApi.csproj", "{D8526042-3B78-4C1B-B231-2F632710F04D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSYDotNetCore.MinimalApi", "YSYDotNetCore.MinimalApi\YSYDotNetCore.MinimalApi.csproj", "{168C04F0-9879-4D75-B4D4-2BB365FCB350}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.MinimalApi", "YSYDotNetCore.MinimalApi\YSYDotNetCore.MinimalApi.csproj", "{168C04F0-9879-4D75-B4D4-2BB365FCB350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
