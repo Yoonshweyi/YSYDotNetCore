@@ -6,6 +6,7 @@ using YSYDotNetCore.ConsoleApp.AdoDotNetExamples;
 using YSYDotNetCore.ConsoleApp.DapperExamples;
 using YSYDotNetCore.ConsoleApp.EFCoreExamples;
 using YSYDotNetCore.ConsoleApp.HttpClientExamples;
+using YSYDotNetCore.ConsoleApp.RefitExamples;
 using YSYDotNetCore.ConsoleApp.RestClientExamples;
 
 Console.WriteLine("Hello, World!");
@@ -63,6 +64,12 @@ foreach (DataRow dr in dt.Rows)
 //HttpClientExample httpClientExample = new HttpClientExample();
 //await httpClientExample.run();
 
-RestClientExample restClientExample= new RestClientExample();
-await restClientExample.run();
+//RestClientExample restClientExample= new RestClientExample();
+//await restClientExample.run();
+
+Console.WriteLine("Please wait for api...");
 Console.ReadKey();
+
+RefitExample refitExample= new RefitExample();
+await refitExample.Run();
+
