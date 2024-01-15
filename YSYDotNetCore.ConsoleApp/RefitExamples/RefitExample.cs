@@ -45,7 +45,7 @@ namespace YSYDotNetCore.ConsoleApp.RefitExamples
                 Console.WriteLine(item.Blog_Title);
                 Console.WriteLine(item.Blog_Author);
                 Console.WriteLine(item.Blog_content);
-                Console.WriteLine(item.Blog_content);
+               // Console.WriteLine(item.Blog_content);
 
 
             }
