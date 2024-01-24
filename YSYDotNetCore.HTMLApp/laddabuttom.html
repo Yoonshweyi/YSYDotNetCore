@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/ladda-themeless.min.css"
-      integrity="sha512-O82mrFLGbN9lUKQvbguKzEWmMtn4jO6txC9byiL0cjPGz4MeREeBY9dQR0ymgy8LhRgUL8JG0HtAGKYzg8pkTA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    /> -->
-    <link rel="stylesheet" href="ladda/dist/ladda-themeless.min.css">
-  </head>
-  <body>
-    <button
-      class="btn btn-primary ladda-button"
-      id="btnClick"
-      data-style="expand-left"
-    >
-      <span class="ladda-label">expand-left</span>
-    </button>
-    
-  <script src="ladda/dist/spin.min.js"></script>
-    <script src="ladda/dist/ladda.min.js"></script>
-     <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/ladda.min.js" integrity="sha512-hZL8cWjOAFfWZza/p0uD0juwMeIuyLhAd5QDodiK4sBp1sG7BIeE1TbMGIbnUcUgwm3lVSWJzBK6KxqYTiDGkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Ladda Button</title>
+  <!-- Include Ladda and its dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/ladda.min.css" integrity="sha512-ErqLOKlca4eyyHE/Kl6PVKK3sIuCzi17hm+QQ6n4jVczFz2MruewoZjvjZnU8k+MDGtVZknbTp1Dd7zguSe5aw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- <link rel="stylesheet" href="path/to/ladda.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/ladda-themeless.min.css" integrity="sha512-pSjC7FhLB/hvu1VyzX/LYvHEtKkjVPuFGFaSJIAURoECbVsjwYrB2PEqD4V5wX4sL9pWHhj+gKqLdr/LtfqrXA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/ladda.jquery.min.js" integrity="sha512-n5QpePcXBfH6O4HoIqJ6/rNE7m7J6IzBgWup5oWxZFpeulZaJP/cSaGcy2XbXfTJshViCBcmxcD4zD4gmS2IcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/ladda.min.js" integrity="sha512-OxowQ96EheBKRxTivGsizVvTK8bWt2xZlymiMZ9MArbmOmuxbv+2IlC46k4gZPhZH5eVQAm0F6lk9Yt6M4xu7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/ladda.jquery.min.js" integrity="sha512-RJr7eb1jbqpSlOiF23EqYEzzm1Sqo/CqE9UfI98Tm5kICqWIAWreT7vOoDBmqpohh8PmQbwdykTS+YE7tkXSaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/spin.min.js"
-      integrity="sha512-qByKQKO3eTwzJtP8Y395YbP45QyYZNpJfYu8jfFpWgFTK2xWIiOER7G+63EoXk475fBFzY6HIhbEUio6m72EaQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script> -->
-       <script>
-      $("#btnClick").click(function (e) {
-        e.preventDefault();
-        var l = Ladda.create(this);
-        l.start();
-        setTimeout(() => {
-          l.stop();
-        }, 3000);
-      });
-    </script>
-  </body>
+</head>
+<body>
+
+  <!-- Your button with the "ladda-button" class -->
+  <button class="ladda-button" data-style="expand-right" id="laddaBtn">Click me</button>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/spin.min.js" integrity="sha512-fgSmjQtBho/dzDJ+79r/yKH01H/35//QPPvA2LR8hnBTA5bTODFncYfSRuMal78C08vUa93q3jyxPa273cWzqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <script src="path/to/spin.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/ladda.min.js" integrity="sha512-hZL8cWjOAFfWZza/p0uD0juwMeIuyLhAd5QDodiK4sBp1sG7BIeE1TbMGIbnUcUgwm3lVSWJzBK6KxqYTiDGkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <script src="path/to/ladda.min.js"></script> -->
+  <script>
+   $(document).ready(function () {
+  // Initialize Ladda on the button
+  var laddaButton = Ladda.create($('#laddaBtn')[0]);
+
+  // Button click event
+  $('#laddaBtn').on('click', function () {
+    // Start the loading animation
+    laddaButton.start();
+
+    // Simulate an asynchronous action (e.g., API call, timeout)
+    setTimeout(function () {
+      // Stop the loading animation when the action is complete
+      laddaButton.stop();
+    }, 2000); // Simulating a 2-second process, replace with your actual logic
+  });
+});
+
+  </script>
+</body>
 </html>
