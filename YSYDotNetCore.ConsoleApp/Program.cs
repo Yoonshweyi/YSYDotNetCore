@@ -70,6 +70,6 @@ foreach (DataRow dr in dt.Rows)
 Console.WriteLine("Please wait for api...");
 Console.ReadKey();
 
-RefitExample refitExample= new RefitExample();
-await refitExample.Run();
+//RefitExample refitExample= new RefitExample();
+//await refitExample.Run();
 

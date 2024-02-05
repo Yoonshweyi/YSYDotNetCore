@@ -1,0 +1,213 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+body {
+  font-family: Open Sans;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(https://source.unsplash.com/hNvr4nqFIcQ/2500x1800);
+  background-size: cover;
+}
+
+.mainbox {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.mainbox:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url(./arrow-bottom.png) no-repeat;
+  background-size: 5%;
+  left: 5%;
+  top: 48%;
+  transform: rotate(90deg);
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+  border: 10px solid #949090;
+  overflow: hidden;
+  transition: all ease-in-out 5s;
+  transform: rotate(90deg);
+}
+
+span {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+}
+
+.span1 {
+  clip-path: polygon(0 17%, 0 50%, 50% 50%);
+  background-color: green;
+}
+
+.span2 {
+  clip-path: polygon(0 17%, 30% 0, 50% 50%);
+  background-color: red;
+}
+
+.span3 {
+  clip-path: polygon(30% 0, 71% 0, 50% 50%);
+  background-color: blue;
+}
+
+.span4 {
+  clip-path: polygon(71% 0, 100% 18%, 50% 50%);
+  background-color: salmon;
+}
+
+.span5 {
+  clip-path: polygon(100% 18%, 100% 50%, 50% 50%);
+  background: #ff8300;
+}
+
+.box2 .span3 {
+  background-color: #00ff04;
+}
+
+.box2 {
+  width: 100%;
+  height: 100%;
+  transform: rotate(180deg);
+}
+
+.font {
+  color: white;
+  font-size: 20px;
+}
+
+.box1 .span1 b {
+  position: absolute;
+  top: 39%;
+  right: 60%;
+  transform: rotate(200deg);
+  text-align: center;
+}
+
+.box1 .span2 b {
+  position: absolute;
+  top: 25%;
+  right: 57%;
+  transform: rotate(-130deg);
+}
+
+.box1 .span3 b {
+  position: absolute;
+  top: 20%;
+  right: 36%;
+  transform: rotate(-90deg);
+}
+
+.box1 .span4 b {
+  position: absolute;
+  top: 25%;
+  right: 15%;
+  transform: rotate(-45deg);
+}
+
+.box1 .span5 b {
+  position: absolute;
+  top: 38%;
+  right: 10%;
+  transform: rotate(-15deg);
+  text-align: center;
+}
+
+.box2 .span1 b {
+  position: absolute;
+  top: 34%;
+  right: 70%;
+  transform: rotate(200deg);
+}
+
+.box2 .span2 b {
+  position: absolute;
+  top: 20%;
+  right: 60%;
+  transform: rotate(-130deg);
+  text-align: center;
+}
+
+.box2 .span3 b {
+  position: absolute;
+  top: 15%;
+  right: 40%;
+  transform: rotate(270deg);
+}
+
+.box2 .span4 b {
+  position: absolute;
+  top: 27%;
+  right: 20%;
+  transform: rotate(310deg);
+}
+
+.box2 .span5 b {
+  position: absolute;
+  top: 35%;
+  right: 10%;
+  transform: rotate(-20deg);
+  text-align: center;
+}
+
+.spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 4px solid white;
+  background-color: #ff5722;
+  color: #fff;
+  box-shadow: 0 5px 20px #000;
+  font-weight: bold;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.spin:active {
+  width: 70px;
+  height: 70px;
+  font-size: 20px;
+}
+
+.mainbox.animate:after {
+  animation: animateArrow 0.7s ease infinite;
+}
+
+audio {
+  display: none;
+}
+
+@keyframes animateArrow {
+  50% {
+    right: -50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mainbox {
+    width: 100%;
+    height: 50%;
+  }
+}

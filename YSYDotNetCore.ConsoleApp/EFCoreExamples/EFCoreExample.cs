@@ -15,14 +15,14 @@ namespace YSYDotNetCore.ConsoleApp.EFCoreExamples
         private readonly AppDBContext _dbContext=new AppDBContext();
         public void run()
         {
-            // Read();
+             Read();
 
             // edit(2);
             // edit(100);
 
             // create("Test Title", "Test Author", "Test Content");
             //update(4, "Test Title1", "Test Author", "Test Content");
-            Delete(14);
+            //Delete(14);
 
         }
 
