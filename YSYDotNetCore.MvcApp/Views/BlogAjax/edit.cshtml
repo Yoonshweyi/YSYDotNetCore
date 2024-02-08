@@ -1,0 +1,55 @@
+﻿@model BlogDataModel
+
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1"  class="form-label">Title</label>
+        <input type="text" class="form-control" value="@Model.Blog_Title" id="Blog_Title">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1"  class="form-label">Author</label>
+        <input type="text" class="form-control" value="@Model.Blog_Author" id="Blog_Author">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1"  class="form-label">Content</label>
+        <input type="text" class="form-control" value="@Model.Blog_content" id="Blog_content">
+    </div>
+    <a href="/Blog" class="btn btn-dark">Cancel</a>
+    <button type="button" id="btnUpdate" class="btn btn-success">Update</button>
+
+@section scripts {
+    <script>
+        $("#btnUpdate").click(function (e) {
+            let title = $('#Blog_Title').val();
+            let author = $('#Blog_Author').val();
+            let content = $('#Blog_content').val();
+
+            let _requestModel = {
+                Blog_Title: title,
+                Blog_Author: author,
+                Blog_content: content
+            };
+            console.log(_requestModel);
+            $.ajax({
+                type: "POST",
+                url:'/BlogAjax/Save/@Model.Blog_Id'
+                url: '@Url.Action("Save", "BlogAjax")',
+                data: { requestModel: _requestModel },
+                dataType: "json",
+                //contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log({ data });
+                    alert(data.message);
+                    location.href = "/BlogAjax";
+                },
+                error: function (ex) {
+                    var r = jQuery.parseJSON(response.responseText);
+                    console.log("Message: " + r.Message);
+                    console.log("StackTrace: " + r.StackTrace);
+                    console.log("ExceptionType: " + r.ExceptionType);
+                }
+            });
+        })
+
+    </script>
+}
+
