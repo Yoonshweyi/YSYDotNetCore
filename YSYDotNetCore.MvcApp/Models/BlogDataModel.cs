@@ -39,7 +39,19 @@ namespace YSYDotNetCore.MvcApp.Models
         public double Y { get; set; }
     }
 
+    public class StackedColumnModel
+    {
+        public List<string> Category { get; set; }
+        public List<SeriesData> series { get; set; }
+       
 
+    }
+
+    public class SeriesData
+    {
+        public string Name { get; set; }
+        public List<int> Data { get; set; }
+    }
 
 
 }
