@@ -1,0 +1,51 @@
+﻿@model List<ScatterDataPoint>
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+@section scripts{
+    <script>
+        var data = @Html.Raw(Json.Serialize(Model));
+         const ctx = document.getElementById('myChart');
+
+         new Chart(ctx, {
+             type: 'scatter',
+             data: {
+                     datasets: [{
+                          label: 'Scatter Dataset',
+                           data: data[0].data.map(d => ({ x: d.x, y: d.y })),
+                          backgroundColor: 'rgb(255, 99, 132)'
+                      }]
+                  },
+             options: {
+                scales: {
+                     x: {
+                           type: 'linear',
+                           position: 'bottom'
+                     }   
+                 }
+             }
+         });
+
+        // const ctx = document.getElementById('myChart');
+
+        // new Chart(ctx, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        //         datasets: [{
+        //             label: '# of Votes',
+        //             data: [12, 19, 3, 5, 2, 3],
+        //             borderWidth: 1
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true
+        //             }
+        //         }
+        //     }
+        // });
+    </script>
+
+}

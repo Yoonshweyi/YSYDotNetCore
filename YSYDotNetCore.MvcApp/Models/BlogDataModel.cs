@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YSYDotNetCore.MvcApp.Models
@@ -26,6 +27,16 @@ namespace YSYDotNetCore.MvcApp.Models
     {
         public string X { get; set; }
         public int[] Y { get; set; }
+    }
+
+    public class ScatterDataPoint
+    {
+        public List<ScatterData> Data { get; set; }
+    }
+    public class ScatterData
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
     }
 
 
