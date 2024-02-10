@@ -1,0 +1,47 @@
+﻿@model List<TemperatureData>
+    <div id="chart"></div>
+    @section scripts{
+        <script>
+
+        var data = @Html.Raw(Json.Serialize(Model));
+              var options = {
+                  series: [
+                      {
+                            name: data[0].name,
+                            data: data[0].data.map(d => ({ x: d.x, y: d.y }))
+                      }
+                  ],
+                  chart: {
+                      height: 350,
+                      type: 'rangeArea'
+                  },
+                  stroke: {
+                      curve: 'straight'
+                  },
+                  title: {
+                      text: 'New York Temperature (all year round)'
+                  },
+                  markers: {
+                      hover: {
+                          sizeOffset: 5
+                      }
+                  },
+                  dataLabels: {
+                      enabled: false
+                  },
+                  yaxis: {
+                      labels: {
+                          formatter: (val) => {
+                              return val + '°C'
+                          }
+                      }
+                  }
+              };
+
+              var chart = new ApexCharts(document.querySelector("#chart"), options);
+              chart.render();
+
+
+        </script>
+
+    }

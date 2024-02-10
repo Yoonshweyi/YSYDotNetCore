@@ -15,4 +15,20 @@ namespace YSYDotNetCore.MvcApp.Models
 
         public string? Blog_content { get; set; }
     }
+
+    public class TemperatureData
+    {
+        public string Name { get; set; }
+        public List<DataPoint> Data { get; set; }
+    }
+
+    public class DataPoint
+    {
+        public string X { get; set; }
+        public int[] Y { get; set; }
+    }
+
+
+
+
 }
