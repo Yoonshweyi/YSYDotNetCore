@@ -1,0 +1,25 @@
+﻿@model List<LineDataPoint>
+@section scripts
+{
+    <script>
+		var data = @Html.Raw(Json.Serialize(Model));
+		window.onload = function () {
+
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				theme: "light2",
+				title: {
+					text: "Simple Line Chart"
+				},
+				data: [{
+					type: "line",
+					indexLabelFontSize: 16,
+					dataPoints:data
+				}]
+			});
+			chart.render();
+
+		}
+
+    </script>
+}

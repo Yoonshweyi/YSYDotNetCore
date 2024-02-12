@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 using YSYDotNetCore.MvcApp.Models;
 
 namespace YSYDotNetCore.MvcApp.Controllers
@@ -21,6 +23,18 @@ namespace YSYDotNetCore.MvcApp.Controllers
                
             };
             return View(scatterDataset);
+        }
+        public IActionResult PolarAreaChart()
+        {
+            var Polarmodel = new PolarAreaModel
+            {
+                Labels = new string[] { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" },
+                PolarData = new int[] { 11, 16, 7, 3, 14 }
+            };
+
+            return View(Polarmodel);
+
+            
         }
     }
 }

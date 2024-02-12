@@ -53,5 +53,45 @@ namespace YSYDotNetCore.MvcApp.Models
         public List<int> Data { get; set; }
     }
 
+	public class LineDataPoint
+	{
+		public int Y { get; set; }
+		public string IndexLabel { get; set; }
+		public string MarkerColor { get; set; }
+		public string MarkerType { get; set; }
+	}
+
+	public class ParetoData
+	{
+		public string Label { get; set; }
+		public int Y { get; set; }
+	}
+
+    public class PolarAreaModel
+    {
+        public string[] Labels { get; set; }
+        public int[] PolarData { get; set; }
+        
+    }
+
+    public class LineStylesChart
+    {
+        public List<SeriesDataSet> Series { get; set; }
+        public List<string>Categories { get; set; }
+    }
+
+    public class SeriesDataSet
+    {
+        public string Name { get; set; }
+        public List<double?> Data { get; set; }
+        public string Website { get; set; }
+        public string Color { get; set; }
+        public string DashStyle { get; set; }
+        public AccessibilityInfo Accessibility { get; set; }
+    }
+    public class AccessibilityInfo
+    {
+        public string Description { get; set; }
+    }
 
 }
