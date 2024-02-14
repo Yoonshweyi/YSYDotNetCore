@@ -1,0 +1,48 @@
+﻿@model UserModel
+
+
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">UserName</label>
+    <input type="text" class="form-control" value="@Model.UserName" id="name">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">UserPassword</label>
+    <input type="password" class="form-control" value="@Model.UserPassword" id="password">
+</div>
+
+<a href="/UserLoginAjax" class="btn btn-dark">Cancel</a>
+<button type="button" id="btnUpdate" class="btn btn-success">Update</button>
+
+@section scripts {
+    <script>
+        $("#btnUpdate").click(function (e) {
+            let UserName = $('#name').val();
+            let UserPassword = $('#password').val();
+
+            let _requestModel = {
+                UserName: UserName,
+                UserPassword: UserPassword
+            };
+            console.log(_requestModel);
+            $.ajax({
+                type: "POST",
+                url: '/UserLoginAjax/Update/@Model.UserId',
+                data: { requestModel: _requestModel },
+                dataType: "json",
+                //contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log({ data });
+                    alert(data.message);
+                    location.href = "/UserLoginAjax";
+                },
+                error: function (ex) {
+                    var r = jQuery.parseJSON(response.responseText);
+                    console.log("Message: " + r.Message);
+                    console.log("StackTrace: " + r.StackTrace);
+                    console.log("ExceptionType: " + r.ExceptionType);
+                }
+            });
+        })
+
+    </script>
+}

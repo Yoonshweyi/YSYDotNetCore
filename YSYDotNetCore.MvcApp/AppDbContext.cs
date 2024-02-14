@@ -11,5 +11,7 @@ namespace YSYDotNetCore.MvcApp
         }
 
         public DbSet<BlogDataModel> Blogs { get; set; }
+
+        public DbSet<UserModel> Users { get; set; }
     }
 }

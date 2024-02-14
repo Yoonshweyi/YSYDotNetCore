@@ -1,0 +1,66 @@
+﻿@model List<UserModel>
+    @{
+        ViewData["Title"] = "Login";
+        int count = 0;
+    }
+    <a href="/BlogAjax/Create" class="btn btn-success">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@(++count)</th>
+                    <td>
+                    <a href="/UserLoginAjax/Edit/@item.UserId" class="btn btn-warning">Edit</a>
+                    <button type="button" class="btn btn-danger btn-delete" data-id="@item.UserId">Delete</button>
+                    </td>
+                    <td>@item.UserName</td>
+                    <td>@item.UserPassword</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+@section scripts {
+    <script>
+        $(".btn-delete").click(function (e) {
+            let result = confirm("Are you sure want to delete?");
+            if (!result) return;
+            let id = $(this).data('id');
+
+            let _requestModel = {
+                UserId: id
+            };
+            console.log(_requestModel);
+            $.ajax({
+                type: "POST",
+                url: '/UserLoginAjax/Delete',
+                data: { requestModel: _requestModel },
+                dataType: "json",
+                //contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log({ data });
+                    alert(data.message);
+                    location.href = "/UserLoginAjax";
+                },
+                error: function (ex) {
+                    var r = jQuery.parseJSON(response.responseText);
+                    console.log("Message: " + r.Message);
+                    console.log("StackTrace: " + r.StackTrace);
+                    console.log("ExceptionType: " + r.ExceptionType);
+                }
+            });
+        })
+
+    </script>
+}
+
+

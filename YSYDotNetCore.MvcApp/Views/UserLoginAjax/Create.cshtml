@@ -1,0 +1,48 @@
+﻿
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">UserName</label>
+    <input type="text" class="form-control" name="name" id="name">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password" id="password">
+</div>
+
+<a href="/Blog" class="btn btn-dark">Cancel</a>
+<button type="button" id="btnSave" class="btn btn-success">Success</button>
+
+@section scripts {
+    <script>
+        $("#btnSave").click(function (e) {
+            let UserName = $('#name').val();
+            let UserPassword = $('#password').val();
+
+            let _requestModel = {
+                UserName: UserName,
+                UserPassword: UserPassword
+            };
+            console.log(_requestModel);
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Save", "UserLoginAjax")',
+                data: { requestModel: _requestModel },
+                dataType: "json",
+                //contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log({ data });
+                    alert(data.message);
+                    location.href = "/UserLoginAjax";
+                },
+                error: function (ex) {
+                    var r = jQuery.parseJSON(response.responseText);
+                    console.log("Message: " + r.Message);
+                    console.log("StackTrace: " + r.StackTrace);
+                    console.log("ExceptionType: " + r.ExceptionType);
+                }
+            });
+        })
+
+    </script>
+}
+
+
