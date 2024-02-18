@@ -61,8 +61,8 @@ foreach (DataRow dr in dt.Rows)
 //EFCoreExample eFCoreExample = new EFCoreExample();
 //eFCoreExample.run();
 
-//HttpClientExample httpClientExample = new HttpClientExample();
-//await httpClientExample.run();
+HttpClientExample httpClientExample = new HttpClientExample();
+await httpClientExample.run();
 
 //RestClientExample restClientExample= new RestClientExample();
 //await restClientExample.run();

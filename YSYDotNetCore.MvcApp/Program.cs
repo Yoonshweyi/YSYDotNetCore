@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using YSYDotNetCore.MvcApp;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,16 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     string connectionString = builder.Configuration.GetConnectionString("DbConnection");
     opt.UseSqlServer(connectionString);
+});
+
+//builder.Services.AddScoped<HttpClient>();
+builder.Services.AddScoped(n =>
+{
+    HttpClient httpclient = new HttpClient()
+    {
+        BaseAddress = new Uri(builder.Configuration.GetSection("ApiUrl").Value!)
+    };
+    return httpclient;
 });
 
 

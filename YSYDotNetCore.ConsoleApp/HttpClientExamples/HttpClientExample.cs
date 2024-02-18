@@ -20,7 +20,7 @@ namespace YSYDotNetCore.ConsoleApp.HttpClientExamples
             //await read();
             //await Edit(6);
 
-            // await create("Test Title", "Test Author", "Test Content");
+             await create("Test1", "Test Author2", "Test Content3");
             // await update(7, "Test Title", "Test Author", "Test Content");
             await delete(7);
           
