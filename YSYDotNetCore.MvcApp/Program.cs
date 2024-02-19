@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Refit;
+using RestSharp;
+using YSYDotNetCore.ConsoleApp.RefitExamples;
 using YSYDotNetCore.MvcApp;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +24,16 @@ builder.Services.AddScoped(n =>
     };
     return httpclient;
 });
+
+builder.Services.AddScoped(n =>
+{
+    RestClient restClient = new RestClient(builder.Configuration.GetSection("ApiUrl").Value!);
+    return restClient;
+});
+
+builder.Services
+     .AddRefitClient<IBlogApi>()
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri(builder.Configuration.GetSection("ApiUrl").Value!));
 
 
 var app = builder.Build();

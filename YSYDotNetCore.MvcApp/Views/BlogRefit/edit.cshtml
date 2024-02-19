@@ -1,0 +1,17 @@
+﻿@model BlogDataModel
+<form method="post" action="/BlogRefit/Update/@Model.Blog_Id">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input type="text" class="form-control" value="@Model.Blog_Title" name="Blog_Title">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Author</label>
+        <input type="text" class="form-control" value="@Model.Blog_Author" name="Blog_Author">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Content</label>
+        <input type="text" class="form-control" value="@Model.Blog_content" name="Blog_content">
+    </div>
+    <a href="/Blog" class="btn btn-dark">Cancel</a>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>

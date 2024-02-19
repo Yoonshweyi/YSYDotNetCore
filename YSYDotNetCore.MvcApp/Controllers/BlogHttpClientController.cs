@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RestSharp;
 using System.Text;
 using YSYDotNetCore.MvcApp.Models;
 using static System.Net.Mime.MediaTypeNames;
@@ -9,6 +10,8 @@ namespace YSYDotNetCore.MvcApp.Controllers
     public class BlogHttpClientController : Controller
     {
         private readonly HttpClient _httpClient;
+        
+
 
         public BlogHttpClientController(HttpClient httpclient)
         {
