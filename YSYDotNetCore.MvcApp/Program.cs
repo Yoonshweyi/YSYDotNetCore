@@ -2,10 +2,24 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 using RestSharp;
+using Serilog;
+using Serilog.Sinks.MSSqlServer;
 using YSYDotNetCore.ConsoleApp.RefitExamples;
 using YSYDotNetCore.MvcApp;
 
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/MyAppfile.log", rollingInterval: RollingInterval.Hour)
+    .WriteTo
+    .MSSqlServer(
+    connectionString: "Server=NYEINCHANMOE\\SQL2022;Database=YSYDotNetCore;User ID=sa;Password=201328;TrustServerCertificate = true;",
+    sinkOptions: new MSSqlServerSinkOptions { TableName = "Tbl_Logfile", AutoCreateSqlTable = true })
+    .CreateLogger();
+
+try { 
+Log.Information("Starting web application");
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -58,3 +72,12 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

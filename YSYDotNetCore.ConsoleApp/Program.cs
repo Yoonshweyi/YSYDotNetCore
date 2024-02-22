@@ -1,4 +1,6 @@
 ﻿
+using Serilog;
+using Serilog.Sinks.MSSqlServer;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -9,7 +11,21 @@ using YSYDotNetCore.ConsoleApp.HttpClientExamples;
 using YSYDotNetCore.ConsoleApp.RefitExamples;
 using YSYDotNetCore.ConsoleApp.RestClientExamples;
 
+Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.Console()
+            .WriteTo.File("logs/myapp.log", rollingInterval: RollingInterval.Hour)
+            .WriteTo
+            .MSSqlServer(
+            connectionString: "Server=NYEINCHANMOE\\SQL2022;Database=YSYDotNetCore;User ID=sa;Password=201328;TrustServerCertificate = true;",
+            sinkOptions: new MSSqlServerSinkOptions { TableName = "Tbl_Log",AutoCreateSqlTable=true })
+            .CreateLogger();
+
+
+
 Console.WriteLine("Hello, World!");
+Log.Information("Hello, world!");
+
 //SqlConnectionStringBuilder sqlConnectionStringBuilder=new SqlConnectionStringBuilder();
 //sqlConnectionStringBuilder.DataSource = "NYEINCHANMOE\\SQL2022";
 //sqlConnectionStringBuilder.InitialCatalog = "YSYDotNetCore";
@@ -61,14 +77,29 @@ foreach (DataRow dr in dt.Rows)
 //EFCoreExample eFCoreExample = new EFCoreExample();
 //eFCoreExample.run();
 
-HttpClientExample httpClientExample = new HttpClientExample();
-await httpClientExample.run();
+//HttpClientExample httpClientExample = new HttpClientExample();
+//await httpClientExample.run();
 
 //RestClientExample restClientExample= new RestClientExample();
 //await restClientExample.run();
 
-Console.WriteLine("Please wait for api...");
-Console.ReadKey();
+//Console.WriteLine("Please wait for api...");
+//Console.ReadKey();
+
+int a = 10, b = 0;
+try
+{
+    Log.Debug("Dividing {A} by {B}", a, b);
+    Console.WriteLine(a / b);
+}
+catch (Exception ex)
+{
+    Log.Error(ex, "Something went wrong");
+}
+finally
+{
+    await Log.CloseAndFlushAsync();
+}
 
 //RefitExample refitExample= new RefitExample();
 //await refitExample.Run();
