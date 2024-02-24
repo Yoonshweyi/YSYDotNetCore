@@ -31,13 +31,8 @@ namespace YSYDotNetCore.RestApi.Controllers
         }
 
         [HttpGet("{pageNo}/{pageSize}")]
-        public IActionResult GetBlogs(int pageNo,int pageSize)
+        public IActionResult GetBlogs(int pageNo=1,int pageSize=10)
         {
-           //pageNo=1[1-10]
-           //pageNo=2[11-20]
-           //endRowno=pageno*pagesize;(1*10)
-           //startrowno=endrowno-pagesize+1;(10-10)+1
-           //567=5670-10=5660+1=5661-5670
            var lst= _dbContext.Blogs
             .Skip((pageNo - 1) * pageSize)
             .Take(pageSize)
@@ -51,7 +46,7 @@ namespace YSYDotNetCore.RestApi.Controllers
             }
             return Ok(new
             {
-               EndOfPage = pageNo >=pagecount,
+               EndOfPage = pageNo >= pagecount,
                 PageCount = pagecount,
                 PageNo = pageNo,
                 PageSize = pageSize,

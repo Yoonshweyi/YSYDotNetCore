@@ -94,13 +94,5 @@ namespace YSYDotNetCore.MvcApp.Models
         public string Description { get; set; }
     }
 
-    //public class PageSettingModel
-    //{
-    //    public int PageNo { get; set; }
-    //    public int PageSize { get; set; }
-    //    public int PageCount { get; set; }
-    //    public int PageRowCount { get; set; }
-
-    //}
-
+    
 }

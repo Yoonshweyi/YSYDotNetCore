@@ -2,14 +2,14 @@
 @{
     ViewData["Title"] = "Blog";
     int count = 0;
-    int pageCount = Model.PageSetting.PageCount;
-    int pageNo = Model.PageSetting.PageNo;
-    int pageSize = Model.PageSetting.PageSize;
+    // int pageNo = Model.PageSetting.PageNo;
+    // int pageCount = Model.PageSetting.PageCount;
+    // int pageSize = Model.PageSetting.PageSize;
 
-    string GetLink(int pageNo,int pageSize)
-    {
-        return $"/Blog/List?pageNo={pageNo}&pageSize={pageSize}";
-    }
+    // string GetLink(int pageNo,int pageSize)
+    // {
+    //     return $"/Blog/BlogList?pageNo={pageNo}&pageSize={pageSize}";
+    // }
 }
 <a href="/Blog/Create" class="btn btn-success">Create</a>
 <table class="table">
@@ -37,66 +37,4 @@
         }
     </tbody>
 </table>
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
- 
-
-        @if (pageCount <= 9)
-        {
-            for(int i = 1; i < pageCount; i++)
-            {
-                if (pageNo == i)
-                {
-
-                    <li class="page-item"><a class="page-link" href="@GetLink(i,pageSize)">@i</a></li>
-                    <li class="page-item active" aria-current="page">
-                        @i
-                    </li>
-                }
-                else
-                {
-                    <li class="page-item"><a class="page-link" href="@GetLink(i,pageSize)">@i</a></li>
-
-                }
-            }
-        }
-        else
-        {
-            if(pageNo<=3 || pageNo - 2 >= pageCount)
-            {
-                for(int i = 1; i <= 4; i++)
-                {
-                    if (pageNo == i)
-                    {
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active" aria-current="page">
-                            @i
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item"><a class="page-link" href="@GetLink(i,pageSize)">@i</a></li>
-
-                    }
-                }
-                <li class="page-item"><a class="page-link" href="#">...</a></li>
-
-                for (int i = pageCount-3; i <= pageCount; i++)
-                {
-                    if (pageNo == i)
-                    {
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active" aria-current="page">
-                            @i
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item"><a class="page-link" href="@GetLink(i,pageSize)">@i</a></li>
-
-                    }
-                }
-            }
-        }
-    </ul>
-</nav>
+@await Html.PartialAsync("_PartialPaginate", Model.PageSetting)
