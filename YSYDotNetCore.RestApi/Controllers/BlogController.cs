@@ -1,21 +1,31 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using YSYDotNetCore.RestApi.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace YSYDotNetCore.RestApi.Controllers
 {
+    
     //https://localhost:3000/api/Blog
     [Route("api/[controller]")]
     [ApiController]
     public class BlogController : ControllerBase
     {
         private readonly AppDBContext _dbContext = new AppDBContext();
+        private readonly ILogger<BlogController> _logger;
+
+        public BlogController(ILogger<BlogController> logger)
+        {
+            _logger = logger;
+            _logger.LogDebug(1, "NLog injected into BlogController");
+        }
         [HttpGet]
         public IActionResult GetBlogs()
         {
             var lst = _dbContext.Blogs.ToList();
+            _logger.LogInformation("Hello, this is the index!");
             return Ok(lst);
         }
 
@@ -31,7 +41,7 @@ namespace YSYDotNetCore.RestApi.Controllers
         }
 
         [HttpGet("{pageNo}/{pageSize}")]
-        public IActionResult GetBlogs(int pageNo=1,int pageSize=10)
+        public IActionResult GetBlogs(int pageNo,int pageSize)
         {
            var lst= _dbContext.Blogs
             .Skip((pageNo - 1) * pageSize)
@@ -61,15 +71,19 @@ namespace YSYDotNetCore.RestApi.Controllers
         [HttpPost]
         public IActionResult CreateBlogs(BlogDataModel blog)
         {
+            _logger.LogInformation("Create  blog Model => " + JsonConvert.SerializeObject(blog));
             _dbContext.Blogs.Add(blog);
             var result=_dbContext.SaveChanges();
             var message = result > 0 ? "Saving Successful" : "Saving Failed";
+            _logger.LogInformation(message);
+
             return Ok(message);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateBlogs(int id, BlogDataModel blog)
         {
+            _logger.LogInformation("Update  blog Model => " + JsonConvert.SerializeObject(blog));
             var item= _dbContext.Blogs.FirstOrDefault(x=>x.Blog_Id == id);
             if(item is null)
             {
@@ -97,6 +111,8 @@ namespace YSYDotNetCore.RestApi.Controllers
 
             int result= _dbContext.SaveChanges();
             string message = result > 0 ? "Update Successful ." : "Update Failed.";
+            _logger.LogInformation(message);
+
 
             return Ok(message);
           
@@ -105,6 +121,7 @@ namespace YSYDotNetCore.RestApi.Controllers
         [HttpPatch("{id}")]
         public IActionResult PatchBlogs(int id, BlogDataModel blog)
         {
+            _logger.LogInformation("Patch  blog Model => " + JsonConvert.SerializeObject(blog));
             var item = _dbContext.Blogs.FirstOrDefault(x => x.Blog_Id == id);
             if(item is null)
             {
@@ -127,6 +144,8 @@ namespace YSYDotNetCore.RestApi.Controllers
 
             int result = _dbContext.SaveChanges();
             string message = result > 0 ? "Update Successful ." : "Update Failed.";
+            _logger.LogInformation(message);
+
 
             return Ok(message);
 
@@ -136,6 +155,7 @@ namespace YSYDotNetCore.RestApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteBlogs(int id)
         {
+            _logger.LogInformation("Delete blog Model => " + JsonConvert.SerializeObject(id));
             var item = _dbContext.Blogs.FirstOrDefault(x => x.Blog_Id == id);
             if (item is null)
             {
@@ -144,6 +164,8 @@ namespace YSYDotNetCore.RestApi.Controllers
             _dbContext.Blogs.Remove(item);
             int result = _dbContext.SaveChanges();
             string message = result > 0 ? "Deleting Successful" : "Deleting Failed";
+            _logger.LogInformation(message);
+
             return Ok(message);
         }
     }
