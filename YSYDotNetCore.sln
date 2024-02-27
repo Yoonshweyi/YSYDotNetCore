@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.MvcApp", "YSY
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.ChatAppUsingSignalR", "YSYDotNetCore.ChatAppUsingSignalR\YSYDotNetCore.ChatAppUsingSignalR.csproj", "{D0B23F98-B3A2-4775-8DED-38DE0E943820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSYDotNetCore.MinimalAPi", "YSYDotNetCore.MinimalAPi\YSYDotNetCore.MinimalAPi.csproj", "{B805B347-D728-4FB5-B97E-7A269FDE89D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.MinimalAPi", "YSYDotNetCore.MinimalAPi\YSYDotNetCore.MinimalAPi.csproj", "{B805B347-D728-4FB5-B97E-7A269FDE89D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSYDotNetCore.repository", "YSYDotNetCore.repository\YSYDotNetCore.repository.csproj", "{08249856-740C-4867-BF85-88839A8073A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B805B347-D728-4FB5-B97E-7A269FDE89D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B805B347-D728-4FB5-B97E-7A269FDE89D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B805B347-D728-4FB5-B97E-7A269FDE89D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08249856-740C-4867-BF85-88839A8073A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08249856-740C-4867-BF85-88839A8073A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08249856-740C-4867-BF85-88839A8073A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08249856-740C-4867-BF85-88839A8073A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
