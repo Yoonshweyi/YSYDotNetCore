@@ -46,7 +46,7 @@ namespace YSYDotNetCore.MvcApp.Controllers
             return View(item);
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Update(int id, BlogDataModel requestModel)
         {
             var item = await _appDbContext.Blogs.FirstOrDefaultAsync(x => x.Blog_Id == id);

@@ -98,8 +98,9 @@ namespace YSYDotNetCore.MvcApp.Controllers
             item.Blog_content = requestModel.Blog_content;
            var result= await _appDbContext.SaveChangesAsync();
             var message = result > 0 ? "Updating Successful" : "Updating Failed";
-            _logger.LogInformation(message);
+            
             return RedirectToAction("Index");
+            _logger.LogInformation(message);
         }
 
 
