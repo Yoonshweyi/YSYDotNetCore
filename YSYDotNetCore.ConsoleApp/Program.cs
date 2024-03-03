@@ -11,20 +11,20 @@ using YSYDotNetCore.ConsoleApp.HttpClientExamples;
 using YSYDotNetCore.ConsoleApp.RefitExamples;
 using YSYDotNetCore.ConsoleApp.RestClientExamples;
 
-Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .WriteTo.Console()
-            .WriteTo.File("logs/myapp.log", rollingInterval: RollingInterval.Hour)
-            .WriteTo
-            .MSSqlServer(
-            connectionString: "Server=NYEINCHANMOE\\SQL2022;Database=YSYDotNetCore;User ID=sa;Password=201328;TrustServerCertificate = true;",
-            sinkOptions: new MSSqlServerSinkOptions { TableName = "Tbl_Log",AutoCreateSqlTable=true })
-            .CreateLogger();
+//Log.Logger = new LoggerConfiguration()
+//            .MinimumLevel.Debug()
+//            .WriteTo.Console()
+//            .WriteTo.File("logs/myapp.log", rollingInterval: RollingInterval.Hour)
+//            .WriteTo
+//            .MSSqlServer(
+//            connectionString: "Server=NYEINCHANMOE\\SQL2022;Database=YSYDotNetCore;User ID=sa;Password=201328;TrustServerCertificate = true;",
+//            sinkOptions: new MSSqlServerSinkOptions { TableName = "Tbl_Log",AutoCreateSqlTable=true })
+//            .CreateLogger();
 
 
 
-Console.WriteLine("Hello, World!");
-Log.Information("Hello, world!");
+//Console.WriteLine("Hello, World!");
+//Log.Information("Hello, world!");
 
 //SqlConnectionStringBuilder sqlConnectionStringBuilder=new SqlConnectionStringBuilder();
 //sqlConnectionStringBuilder.DataSource = "NYEINCHANMOE\\SQL2022";
@@ -71,6 +71,9 @@ foreach (DataRow dr in dt.Rows)
 //AdoDotNetExample adoDotNetExample= new AdoDotNetExample();
 //adoDotNetExample.run();
 
+AdoDotNetExample2 adoDotNetExample2 = new AdoDotNetExample2();
+adoDotNetExample2.run();
+
 //DapperExample dapperExample= new DapperExample();
 //dapperExample.run();
 
@@ -86,20 +89,20 @@ foreach (DataRow dr in dt.Rows)
 //Console.WriteLine("Please wait for api...");
 //Console.ReadKey();
 
-int a = 10, b = 0;
-try
-{
-    Log.Debug("Dividing {A} by {B}", a, b);
-    Console.WriteLine(a / b);
-}
-catch (Exception ex)
-{
-    Log.Error(ex, "Something went wrong");
-}
-finally
-{
-    await Log.CloseAndFlushAsync();
-}
+//int a = 10, b = 0;
+//try
+//{
+//    Log.Debug("Dividing {A} by {B}", a, b);
+//    Console.WriteLine(a / b);
+//}
+//catch (Exception ex)
+//{
+//    Log.Error(ex, "Something went wrong");
+//}
+//finally
+//{
+//    await Log.CloseAndFlushAsync();
+//}
 
 //RefitExample refitExample= new RefitExample();
 //await refitExample.Run();

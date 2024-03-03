@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Data.SqlClient;
 using YSYDotNetCore.MinimalApi;
 using YSYDotNetCore.MinimalApi.Models;
+using YSYDotNetCore.MinimalAPi.Features.AdoDotNetBlog;
 using YSYDotNetCore.MinimalAPi.Features.Blog;
+using YSYDotNetCore.Services;
 
 Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
@@ -27,6 +30,7 @@ try
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+    builder.Services.AddScoped(n => new AdoDotNetService(new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("DbConnection"))));
 
     var app = builder.Build();
 
@@ -38,7 +42,8 @@ try
     }
 
     app.UseHttpsRedirection();
-    app.UseBlogService();
+    // app.UseBlogService();
+    app.UseAdoDotNetBlogService();
     app.Run();
 
 

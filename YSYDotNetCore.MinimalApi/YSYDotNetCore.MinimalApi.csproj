@@ -15,4 +15,8 @@
 
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YSYDotNetCore.Services\YSYDotNetCore.Services.csproj" />
+  </ItemGroup>
+
 </Project>
