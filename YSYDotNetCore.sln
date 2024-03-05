@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.ThemeApp", "Y
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.MDBDashboard", "YSYDotNetCore.MDBDashboard\YSYDotNetCore.MDBDashboard.csproj", "{03238239-1456-4254-98AB-4C345453224F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YSYDotNetCore.Services", "YSYDotNetCore.Services\YSYDotNetCore.Services.csproj", "{1507EFFB-8CBA-4924-84B6-ADDD51A7CEF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.Services", "YSYDotNetCore.Services\YSYDotNetCore.Services.csproj", "{1507EFFB-8CBA-4924-84B6-ADDD51A7CEF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.RealTimeChart", "YSYDotNetCore.RealTimeChart\YSYDotNetCore.RealTimeChart.csproj", "{EB5BC76D-AB3F-4820-A862-000F947FB48B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{1507EFFB-8CBA-4924-84B6-ADDD51A7CEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1507EFFB-8CBA-4924-84B6-ADDD51A7CEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1507EFFB-8CBA-4924-84B6-ADDD51A7CEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB5BC76D-AB3F-4820-A862-000F947FB48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5BC76D-AB3F-4820-A862-000F947FB48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5BC76D-AB3F-4820-A862-000F947FB48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5BC76D-AB3F-4820-A862-000F947FB48B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
