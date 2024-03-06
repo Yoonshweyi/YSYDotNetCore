@@ -30,6 +30,26 @@ namespace YSYDotNetCore.MinimalAPi.Features.AdoDotNetBlog
 
             app.MapGet("/api/blog/{id}", async ([FromServicesAttribute] AdoDotNetService _adoDotNetService, int id) =>
             {
+            //    string query = @"SELECT [Blog_Id],
+            //                 [Blog_Title],
+            //                 [Blog_Author],
+            //                 [Blog_content]
+            //                 FROM [dbo].[Tbl_Blog] where Blog_Id = @Blog_Id";
+
+            //    List<SqlParameter> lstparameters = new List<SqlParameter>()
+            //{
+            //    new("@Blog_Id", id)
+            //};
+
+            //    var dt = _adoDotNetService.Query(query, sqlParameters: lstparameters.ToArray());
+
+
+            //    if (dt.Rows.Count == 0)
+            //    {
+            //        Console.WriteLine("No Data Found");
+            //        return;
+            //    }
+
 
                 string query = @"SELECT [Blog_Id],
                              [Blog_Title],
@@ -42,7 +62,8 @@ namespace YSYDotNetCore.MinimalAPi.Features.AdoDotNetBlog
                 new("@Blog_Id", id)
             };
                 var item = _adoDotNetService.Query<BlogDataModel>(query, sqlParameters: lstparameters.ToArray());
-                if (item is null)
+                
+                if (item == null || !item.Any())
                 {
                     return Results.NotFound("No data Found.");
                 }
@@ -101,6 +122,11 @@ namespace YSYDotNetCore.MinimalAPi.Features.AdoDotNetBlog
                 new("@Blog_content", blog.Blog_content)
             };
                 var result = _adoDotNetService.Execute(query, sqlParameters: lstparameters.ToArray());
+                if (result == 0)
+                {
+                    return Results.NotFound("No data Found.");
+                }
+
 
                 string message = result > 0 ? "Update Successful ." : "Update Failed.";
 
@@ -121,6 +147,11 @@ namespace YSYDotNetCore.MinimalAPi.Features.AdoDotNetBlog
             };
 
                 var result = _adoDotNetService.Execute(query, sqlParameters: lstparameters.ToArray());
+                if (result == 0)
+                {
+                    return Results.NotFound("No data Found.");
+                }
+
                 string message = result > 0 ? "Delete Successful.." : "Delete Fail";
                 return Results.Ok(message);
             })

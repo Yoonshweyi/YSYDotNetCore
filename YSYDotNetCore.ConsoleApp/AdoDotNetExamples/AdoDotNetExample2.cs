@@ -26,8 +26,8 @@ namespace YSYDotNetCore.ConsoleApp.AdoDotNetExamples
            //Create("Test Title","Test Author","Test Content");
            //Edit(89);
            //(12);
-           // Update(89,"Test Title", "Test Author", "Test Content");
-          //  Delete(89);
+           //Update(89,"Test Title", "Test Author", "Test Content");
+           //Delete(89);
         }
 
         private void Read()

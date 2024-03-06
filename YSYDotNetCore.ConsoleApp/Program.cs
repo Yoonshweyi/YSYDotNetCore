@@ -71,8 +71,11 @@ foreach (DataRow dr in dt.Rows)
 //AdoDotNetExample adoDotNetExample= new AdoDotNetExample();
 //adoDotNetExample.run();
 
-AdoDotNetExample2 adoDotNetExample2 = new AdoDotNetExample2();
-adoDotNetExample2.run();
+//AdoDotNetExample2 adoDotNetExample2 = new AdoDotNetExample2();
+//adoDotNetExample2.run();
+
+DapperExample2 dapperExample2= new DapperExample2();
+dapperExample2.run();
 
 //DapperExample dapperExample= new DapperExample();
 //dapperExample.run();

@@ -1,4 +1,5 @@
 ﻿using Dapper;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,43 +9,43 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using YSYDotNetCore.ConsoleApp.Models;
+using YSYDotNetCore.Services;
 
 namespace YSYDotNetCore.ConsoleApp.DapperExamples
 {
-    public class DapperExample
+    public class DapperExample2
     {
-      private readonly  SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
+
+        
+
+        private readonly DapperServices _dapperservice=new DapperServices(new SqlConnectionStringBuilder
         {
             DataSource = "NYEINCHANMOE\\SQL2022",
-            InitialCatalog = "YSYDotNetCore",
-            UserID = "sa",
-            Password = "201328"
-        };
+                InitialCatalog = "YSYDotNetCore",
+                UserID = "sa",
+                Password = "201328"
+
+        });
 
         public void run()
         {
-            //read();
-            //Edit(3);
-            //Edit(15);
-            // create("Test Title", "Test Author", "Test Content");
-            update(3,"Test Title", "Test Author", "Test Content");
-            //Delete(1);
+             //read();
+             // Edit(81);
+            //create("Test Title", "Test Author", "Test Content");
+           //update(90,"Test Title", "Test Author", "Test Content");
+            Delete(85);
         }
 
         private void read()
         {
-
-            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
-
-
                 string query = @"SELECT [Blog_Id],
                              [Blog_Title],
                              [Blog_Author],
                              [Blog_content]
                              FROM [dbo].[Tbl_Blog]";
-                List<BlogDataModel> lst = db.Query<BlogDataModel>(query).ToList();
+            var lst = _dapperservice.Query<BlogDataModel>(query);
 
-                foreach (BlogDataModel item in lst)
+            foreach (BlogDataModel item in lst)
                 {
                     Console.WriteLine(item.Blog_Id);
                     Console.WriteLine(item.Blog_Title);
@@ -54,24 +55,31 @@ namespace YSYDotNetCore.ConsoleApp.DapperExamples
 
                 }
 
-            }
-        private void Edit(int id)
-        {
-            
-            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+        }
 
+        private void Edit(int id)
+        { 
 
             string query = @"SELECT [Blog_Id],
                              [Blog_Title],
                              [Blog_Author],
                              [Blog_content]
                              FROM [dbo].[Tbl_Blog] where Blog_Id = @Blog_Id";
-            BlogDataModel? item = db.Query<BlogDataModel>(query,new BlogDataModel { Blog_Id = id }).FirstOrDefault();
 
-           if(item is null) {
+
+            BlogDataModel blog = new BlogDataModel()
+            {
+                Blog_Id = id,
+            };
+
+            BlogDataModel? item = _dapperservice.Query<BlogDataModel>(query,param:blog).FirstOrDefault();
+
+
+            if (item is null)
+            {
                 Console.WriteLine("No data found");
-                
-                return; 
+
+                return;
             }
             Console.WriteLine(item.Blog_Id);
             Console.WriteLine(item.Blog_Title);
@@ -80,8 +88,8 @@ namespace YSYDotNetCore.ConsoleApp.DapperExamples
 
         }
 
-        private void create(string title,string author,string content)
-        { 
+        private void create(string title, string author, string content)
+        {
             string query = @"INSERT INTO [dbo].[Tbl_Blog]
            ([Blog_Title]
            ,[Blog_Author]
@@ -91,23 +99,22 @@ namespace YSYDotNetCore.ConsoleApp.DapperExamples
            ,@Blog_Author
            ,@Blog_content)";
 
-            BlogDataModel blog = new BlogDataModel() {
-            Blog_Title= title,
-            Blog_Author= author,
-            Blog_content= content
+            BlogDataModel blog = new BlogDataModel()
+            {
+                Blog_Title = title,
+                Blog_Author = author,
+                Blog_content = content
             };
 
-            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query, blog);
+           
+            int result = _dapperservice.Execute(query, blog);
 
 
             string message = result > 0 ? "Saving Successful.." : "Saving Fail";
             Console.WriteLine(message);
         }
 
-
-
-        private void update(int id,string title, string author, string content)
+        private void update(int id, string title, string author, string content)
         {
             string query = @"UPDATE [dbo].[Tbl_Blog]
             SET [Blog_Title] = @Blog_Title,
@@ -117,14 +124,12 @@ namespace YSYDotNetCore.ConsoleApp.DapperExamples
 
             BlogDataModel blog = new BlogDataModel()
             {
-                Blog_Id= id,
+                Blog_Id = id,
                 Blog_Title = title,
                 Blog_Author = author,
                 Blog_content = content
             };
-
-            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query, blog);
+            int result = _dapperservice.Execute(query, blog);
 
 
             string message = result > 0 ? "Update Successful.." : "Update Fail";
@@ -132,21 +137,20 @@ namespace YSYDotNetCore.ConsoleApp.DapperExamples
         }
 
         private void Delete(int id)
-        { 
+        {
 
 
             string query = @"DELETE FROM [dbo].[Tbl_Blog]
                              WHERE Blog_Id=@Blog_Id";
 
-            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query, new BlogDataModel { Blog_Id = id });
+          
+            int result = _dapperservice.Execute(query, new BlogDataModel { Blog_Id = id });
 
             string message = result > 0 ? "Delete Successful.." : "Delete Fail";
             Console.WriteLine(message);
-
-
-
         }
+
+
     }
-    }
+}
 
