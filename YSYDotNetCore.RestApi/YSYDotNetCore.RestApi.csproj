@@ -39,6 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\YSYDotNetCore.Models\YSYDotNetCore.Models.csproj" />
     <ProjectReference Include="..\YSYDotNetCore.Services\YSYDotNetCore.Services.csproj" />
   </ItemGroup>
 

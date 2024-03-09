@@ -1,0 +1,36 @@
+﻿@page "/setup/Blog"
+@inject HttpClient HttpClient
+
+<NavLink href="/setup/blog/create" class="btn btn-success">Create</NavLink>
+@if (_bloglistResponseModel is not null)
+   
+{
+    int count = 0;
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in _bloglistResponseModel.Data)
+            {
+                <tr>
+                    <th scope="row">@(++count+((_bloglistResponseModel.PageNo-1)*_bloglistResponseModel.PageSize))</th>
+                    <td>
+                        <a href="/BlogAjax/edit/@item.Blog_Id" class="btn btn-warning">Edit</a>
+                        <a href="/Blog/Delete/@item.Blog_Id" class="btn btn-danger">Delete</a>
+                    </td>
+                    <td>@item.Blog_Title</td>
+                    <td>@item.Blog_Author</td>
+                    <td>@item.Blog_content</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <MudPagination SelectedChanged="PageChanged" Count="@_bloglistResponseModel.PageCount" Class="pa-4" />
+}
+

@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.Services", "Y
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.RealTimeChart", "YSYDotNetCore.RealTimeChart\YSYDotNetCore.RealTimeChart.csproj", "{EB5BC76D-AB3F-4820-A862-000F947FB48B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.BlazorWasm", "YSYDotNetCore.BlazorWasm\YSYDotNetCore.BlazorWasm.csproj", "{EBB154F1-6320-4B8C-85F6-4706253DD37C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.Models", "YSYDotNetCore.Models\YSYDotNetCore.Models.csproj", "{D56A127F-327A-4846-8E86-2F366F1D671D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{EB5BC76D-AB3F-4820-A862-000F947FB48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB5BC76D-AB3F-4820-A862-000F947FB48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB5BC76D-AB3F-4820-A862-000F947FB48B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBB154F1-6320-4B8C-85F6-4706253DD37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB154F1-6320-4B8C-85F6-4706253DD37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB154F1-6320-4B8C-85F6-4706253DD37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB154F1-6320-4B8C-85F6-4706253DD37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56A127F-327A-4846-8E86-2F366F1D671D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56A127F-327A-4846-8E86-2F366F1D671D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56A127F-327A-4846-8E86-2F366F1D671D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56A127F-327A-4846-8E86-2F366F1D671D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

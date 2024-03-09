@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+//using YSYDotNetCore.Models;
 using YSYDotNetCore.RestApi.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -54,7 +55,7 @@ namespace YSYDotNetCore.RestApi.Controllers
             {
                 pagecount++;
             }
-            return Ok(new
+            return Ok(new BloglistResponseModel
             {
                EndOfPage = pageNo >= pagecount,
                 PageCount = pagecount,
