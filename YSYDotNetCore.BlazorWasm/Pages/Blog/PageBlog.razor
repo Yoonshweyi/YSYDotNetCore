@@ -1,6 +1,6 @@
 ﻿@page "/setup/Blog"
 @inject HttpClient HttpClient
-
+@inject IJSRuntime JSRuntime
 <NavLink href="/setup/blog/create" class="btn btn-success">Create</NavLink>
 @if (_bloglistResponseModel is not null)
    
@@ -21,8 +21,8 @@
                 <tr>
                     <th scope="row">@(++count+((_bloglistResponseModel.PageNo-1)*_bloglistResponseModel.PageSize))</th>
                     <td>
-                        <a href="/BlogAjax/edit/@item.Blog_Id" class="btn btn-warning">Edit</a>
-                        <a href="/Blog/Delete/@item.Blog_Id" class="btn btn-danger">Delete</a>
+                        <button type="button" @onclick="()=>Edit(item.Blog_Id)" class="btn btn-warning">Edit</button>
+                        <button type="button" @onclick="()=>Delete(item.Blog_Id)" class="btn btn-danger">Delete</button>
                     </td>
                     <td>@item.Blog_Title</td>
                     <td>@item.Blog_Author</td>
