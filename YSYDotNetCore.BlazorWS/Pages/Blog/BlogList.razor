@@ -1,0 +1,42 @@
+﻿@page "/bloglist"
+@inject HttpClient httpclient
+<NavLink href="/setup/blog/create" class="btn btn-success">Create</NavLink>
+
+<h3>Blog List</h3>
+
+@if (blogs == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    int count = 0;
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in blogs)
+            {
+                <tr>
+                    <th scope="row">@(++count)</th>
+                    <td>
+                        <button type="button" @onclick="()=>Edit(item.Blog_Id)" class="btn btn-warning">Edit</button>
+                        <button type="button"  class="btn btn-danger">Delete</button>
+                    </td>
+                    <td>@item.Blog_Title</td>
+                    <td>@item.Blog_Author</td>
+                    <td>@item.Blog_content</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+
+}

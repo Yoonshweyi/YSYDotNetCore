@@ -73,6 +73,10 @@ namespace YSYDotNetCore.MvcApp.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
+            try
+            {
+
+           
             var item = await _appDbContext.Blogs.FirstOrDefaultAsync(x => x.Blog_Id == id);
 
             if (item is null)
@@ -81,6 +85,12 @@ namespace YSYDotNetCore.MvcApp.Controllers
             }
 
             return View(item);
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPut]

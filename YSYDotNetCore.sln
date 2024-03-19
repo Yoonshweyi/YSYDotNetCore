@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.BlazorWasm", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.Models", "YSYDotNetCore.Models\YSYDotNetCore.Models.csproj", "{D56A127F-327A-4846-8E86-2F366F1D671D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YSYDotNetCore.BlazorWS", "YSYDotNetCore.BlazorWS\YSYDotNetCore.BlazorWS.csproj", "{9C8ED4F2-17F0-4BDB-B9A1-59662F33C56C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{D56A127F-327A-4846-8E86-2F366F1D671D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D56A127F-327A-4846-8E86-2F366F1D671D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D56A127F-327A-4846-8E86-2F366F1D671D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C8ED4F2-17F0-4BDB-B9A1-59662F33C56C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C8ED4F2-17F0-4BDB-B9A1-59662F33C56C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C8ED4F2-17F0-4BDB-B9A1-59662F33C56C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C8ED4F2-17F0-4BDB-B9A1-59662F33C56C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

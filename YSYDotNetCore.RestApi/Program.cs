@@ -43,8 +43,10 @@ try
         options.AddPolicy(name: MyAllowSpecificOrigins,
                           builder =>
                           {
-                              builder.WithOrigins("https://localhost:7012",
-                                                  "http://localhost:5143").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader();
+                              //builder.WithOrigins("https://localhost:7012",
+                              //                    "http://localhost:5143").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader();
+                              builder.WithOrigins("https://localhost:7202",
+                                                 "http://localhost:5102").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader();
                           });
     });
 

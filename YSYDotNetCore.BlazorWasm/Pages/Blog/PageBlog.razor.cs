@@ -72,13 +72,12 @@ namespace YSYDotNetCore.BlazorWasm.Pages.Blog
 
             }
 
-           
 
         }
 
-        private void Edit(int id)
+        private async Task Edit(int id)
         {
-            Nav.NavigateTo($"/setup/blog/update/{id}");
+            Nav.NavigateTo($"setup/blog/update/{id}");
         }
 
 

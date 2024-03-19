@@ -2,7 +2,27 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+ <div class="form-signin m-auto">
+    <form action="/Home/Index" class="form-control" method="post">
+        <h1 class="h3 mb-3 fw-normal">Please Sign in</h1>
+        <div class="form-floating mb-3">
+            <input type="text" name="UserName" class="form-control" id="txtusername" placeholder="UserName">
+            <label for="floatingInput">UserName</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" name="Password" id="txtpassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-3">Sign In</button>
+    </form>
 </div>
+
+@section css {
+    <style>
+        .form-signin {
+            max-width: 500px;
+            padding: 1rem;
+        }
+    </style>
+ 
+}

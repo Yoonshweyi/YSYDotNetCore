@@ -93,6 +93,4 @@ namespace YSYDotNetCore.MvcApp.Models
     {
         public string Description { get; set; }
     }
-
-    
 }

@@ -6,6 +6,7 @@ using Serilog;
 using Serilog.Sinks.MSSqlServer;
 using YSYDotNetCore.ConsoleApp.RefitExamples;
 using YSYDotNetCore.MvcApp;
+using YSYDotNetCore.MvcApp.Middlewares;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -27,7 +28,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     string connectionString = builder.Configuration.GetConnectionString("DbConnection");
     opt.UseSqlServer(connectionString);
-});
+},ServiceLifetime.Transient,ServiceLifetime.Transient);
 
 //builder.Services.AddScoped<HttpClient>();
 builder.Services.AddScoped(n =>
@@ -60,7 +61,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+    app.UseCookieMiddleware();
+
+
+
+    app.UseHttpsRedirection();
+
+  
+   
 app.UseStaticFiles();
 
 app.UseRouting();
