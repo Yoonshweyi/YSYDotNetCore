@@ -15,6 +15,7 @@ else
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th></th>
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Content</th>
@@ -26,8 +27,9 @@ else
                 <tr>
                     <th scope="row">@(++count)</th>
                     <td>
-                        <button type="button" @onclick="()=>Edit(item.Blog_Id)" class="btn btn-warning">Edit</button>
-                        <button type="button"  class="btn btn-danger">Delete</button>
+                        <a class="btn btn-primary btn-sm" href="/blog/detail/@item.Blog_Id" role="button">Edit</a>
+                        <button type="button" @onclick="()=>Delete(item.Blog_Id)" class="btn btn-danger">Delete</button>
+ 
                     </td>
                     <td>@item.Blog_Title</td>
                     <td>@item.Blog_Author</td>

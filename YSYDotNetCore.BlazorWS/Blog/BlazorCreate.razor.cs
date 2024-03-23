@@ -7,7 +7,7 @@ using YSYDotNetCore.BlazorWS.Services;
 using YSYDotNetCore.Models;
 using static MudBlazor.CategoryTypes;
 
-namespace YSYDotNetCore.BlazorWS.Pages.Blog
+namespace YSYDotNetCore.BlazorWS.Blog
 {
 
     public partial class BlazorCreate
@@ -19,8 +19,6 @@ namespace YSYDotNetCore.BlazorWS.Pages.Blog
         BlogDataModel Blog = new BlogDataModel();
         protected async void Save()
         {
-            //var BlogJson = JsonConvert.SerializeObject(Blog);
-            // HttpContent content = new StringContent(BlogJson, Encoding.UTF8, MediaTypeNames.Application.Json);
             await BlogService.CreateBlogAsync(Blog);
             Nav.NavigateTo("/bloglist");
         }

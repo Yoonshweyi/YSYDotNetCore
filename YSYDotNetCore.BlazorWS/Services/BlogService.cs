@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MudBlazor;
 using Newtonsoft.Json;
+using System.Net;
 using System.Net.Mime;
 using System.Reflection;
 using System.Reflection.Metadata;
@@ -13,7 +14,7 @@ namespace YSYDotNetCore.BlazorWS.Services
 {
     public class BlogService : IBlogService
     {
-        private HttpClient _httpClient;
+        public HttpClient _httpClient;
         private readonly IToastService _toastService;
 
 
@@ -32,9 +33,9 @@ namespace YSYDotNetCore.BlazorWS.Services
 
        
 
-        public Task DeleteBlogAsync(int id)
+        public async Task DeleteBlogAsync(int id)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync($"api/Blog/{id}");
         }
 
         public async Task<IEnumerable<BlogDataModel>> GetBlogListAsync()
@@ -42,15 +43,17 @@ namespace YSYDotNetCore.BlazorWS.Services
           return  await _httpClient.GetFromJsonAsync<IEnumerable<BlogDataModel>>("api/Blog");
         }
 
-        public async Task<BlogDataModel> GetBlogByIdAsync(int id)
+        public async Task<BlogDataModel?> GetBlogByIdAsync(int id)
         {
-            return await _httpClient.GetFromJsonAsync<BlogDataModel>($"api/Blog/{id}");
-           
+            var result= await _httpClient.GetFromJsonAsync<BlogDataModel>($"api/Blog/{id}");
+            return result;
         }
 
-        public Task UpdateBlogAsync(BlogDataModel blog)
+        public async Task UpdateBlogAsync(BlogDataModel blog, int id)
         {
-            throw new NotImplementedException();
+            string jsonStr = JsonConvert.SerializeObject(blog);
+            HttpContent content = new StringContent(jsonStr, Encoding.UTF8, MediaTypeNames.Application.Json);
+            await _httpClient.PutAsync($"api/Blog/{id}", content);
         }
     }
 }

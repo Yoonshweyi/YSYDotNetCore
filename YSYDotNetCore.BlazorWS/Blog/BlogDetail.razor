@@ -1,0 +1,24 @@
+﻿@page "/blog/detail/{id:int}"
+<h1>Update Blog</h1>
+
+@if (bmodel != null)
+{
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control" @bind="bmodel.Blog_Title" name="title">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Author</label>
+        <input type="text" class="form-control" @bind="bmodel.Blog_Author" name="author">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Content</label>
+        <input type="text" class="form-control" @bind="bmodel.Blog_content" name="content">
+    </div>
+    <a href="/Blog" class="btn btn-dark">Cancel</a>
+    <button type="button" class="btn btn-success" @onclick="Update">Update</button>
+}
+
+@code {
+
+}

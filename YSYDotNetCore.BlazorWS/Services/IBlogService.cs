@@ -8,7 +8,7 @@ namespace YSYDotNetCore.BlazorWS.Services
         Task<IEnumerable<BlogDataModel>> GetBlogListAsync();
 
         Task<BlogDataModel> GetBlogByIdAsync(int id);
-        Task UpdateBlogAsync(BlogDataModel blog);
+        Task UpdateBlogAsync(BlogDataModel blog,int id);
         Task DeleteBlogAsync(int id);
         Task CreateBlogAsync(BlogDataModel blog);
     }
